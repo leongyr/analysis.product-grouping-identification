@@ -12,17 +12,22 @@ While it is important to deter negative behaviour, it is also very important to 
 ## Task
 Task: Using the keyword directory, identify the product groups that are present in the product title.
 
-Example: Group: 0, Keywords: jacket Group: 1, Keywords: windbreaker, raincoat
+Example: 
 
+Group: 0, Keywords: jacket 
+Group: 1, Keywords: windbreaker, raincoat
 Index: 0, Name: red jacket windbreaker
-
 Since titles in name contains keywords from both groups 0 and 1. --> groups found: [0,1]
 
-Input 1.Extra Material 2 - keyword list_with substring.csv: List of product keywords, separated into product groups. Each row is a product group.
+Inputs
 
-The same keyword may appear in multiple groups (eg. notebook) Some keywords can be substrings of other keywords (eg. keyboard and electric keyboard). In that case, the longer word should take priority over the substring 2.Extra Material 3 - mismatch list.csv: List of mismatch keywords, separated according to keywords. Each column is a mismatch word list. The column header is the product keyword, the remaining cells in the column are the corresponding mismatched words.
+1.Extra Material 2 - keyword list_with substring.csv: List of product keywords, separated into product groups. Each row is a product group.
+The same keyword may appear in multiple groups (eg. notebook) Some keywords can be substrings of other keywords (eg. keyboard and electric keyboard). In that case, the longer word should take priority over the substring 
 
-For each product keyword A (eg. table) in the list, if the corresponding mismatched words B (eg. tennis) are also found in the product name, then keyword A should not count towards the keyword groups found in that product name. 3.Keyword_spam_question.csv: File containing product name that you need to extract the product keyword groups.
+2.Extra Material 3 - mismatch list.csv: List of mismatch keywords, separated according to keywords. Each column is a mismatch word list. The column header is the product keyword, the remaining cells in the column are the corresponding mismatched words.
+For each product keyword A (eg. table) in the list, if the corresponding mismatched words B (eg. tennis) are also found in the product name, then keyword A should not count towards the keyword groups found in that product name.
+
+3.Keyword_spam_question.csv: File containing product name that you need to extract the product keyword groups.
 
 ## Data
 You will be given a directory of product keywords, organized into keyword groups. The .csv file provided will have 2 columns:
@@ -53,18 +58,16 @@ Eg 3: Printer toner wallpaper ink should contain product groups [81, 182], becau
 
 Eg 4: Table tennis racket shoes should contain product groups [45, 108], because keyword racket is in group 108 and keyword shoes is in group 45. Even though keyword table is also present in the keyword dictionary, it is not counted because tennis is also present in the product title.
 
-Submit Format A csv file (utf-8 encoding) containing 2 columns:
+## Submission Format
+A csv file (utf-8 encoding) containing 2 columns:
 
 index : index of the item in the Keyword_spam_question.csv file
-
 groups_found : list of groups that are found in the corresponding item title, sorted ascending. Group names should be according to Extra Material 2 - keyword list_with substring.csv file. If 2 product groups are both equally presentable in the result, choose the group with the smaller index.
 
 Example: index	groups_found 
         0	[77] 
         1	[216, 217] 
         2	[216, 218, 221]
-
-Input Extra Material 2 - keyword list_with substring.csv: List of product keywords, separated into product groups. Each row is a product group. The same keyword may appear in multiple groups (eg. notebook) Some keywords can be substrings of other keywords (eg. keyboard and electric keyboard). In that case, the longer word should take priority over the substring Extra Material 3 - mismatch list.csv: List of mismatch keywords, separated according to keywords. Each column is a mismatch word list. The column header is the product keyword, the remaining cells in the column are the mismatched words. For each product keyword A (eg. table) in the list, if the corresponding mismatched words B (eg. tennis) are also found in the product name, then keyword A should not count towards the keyword groups found in that product name. Keyword_spam_question.csv: File containing product name that you need to extract the product keyword groups. 
 
 ## Output
 Output a csv file (utf-8 encoding) containing 2 columns:
